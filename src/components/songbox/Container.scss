@@ -1,5 +1,5 @@
 .container {
-  margin-top: 40px;
+  height: 100%;
   margin-left: 20%;
   margin-right: 20%;
   display: flex;
@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 45px;
 }
 
 .title {

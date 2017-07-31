@@ -8,12 +8,16 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import App from './components/app.jsx';
 import Welcome from './components/src/Welcome.jsx';
 import Songbox from './components/songbox/Container.jsx';
+
 import colorsMiddleware from './middleware/colors.js';
+import songboxMiddleware from './middleware/songbox.js';
+
 import colorsReducer from './reducers/colors.js';
 import SongboxReducer from './reducers/songbox.js';
 
 const rootMiddleware = [
   colorsMiddleware,
+  songboxMiddleware,
 ];
 
 const rootReducer = combineReducers({

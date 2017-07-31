@@ -7,6 +7,7 @@ import * as api from '../../actions/colors.js';
 
 import LoadingPercent from './LoadingPercent.jsx';
 import Search from './Search.jsx';
+import SearchResults from './SearchResults.jsx';
 import styles from './Container.scss';
 
 class Container extends React.Component {
@@ -25,7 +26,7 @@ class Container extends React.Component {
         </div>
         <Search />
         <LoadingPercent />
-        {/* Results */}
+        <SearchResults />
         {/* iframe */}
       </div>
     );
