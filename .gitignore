@@ -1,0 +1,11 @@
+/node_modules
+/dist
+package-lock.json
+npm-debug.log
+.DS_Store
+
+todo.txt
+
+# IntelliJ
+*.iml
+/.idea
