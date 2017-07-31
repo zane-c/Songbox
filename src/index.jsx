@@ -7,8 +7,10 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 
 import App from './components/app.jsx';
 import Welcome from './components/src/Welcome.jsx';
+import Songbox from './components/songbox/Container.jsx';
 import colorsMiddleware from './middleware/colors.js';
 import colorsReducer from './reducers/colors.js';
+import SongboxReducer from './reducers/songbox.js';
 
 const rootMiddleware = [
   colorsMiddleware,
@@ -16,6 +18,7 @@ const rootMiddleware = [
 
 const rootReducer = combineReducers({
   colors: colorsReducer,
+  songbox: SongboxReducer,
   routing: routerReducer,
 });
 
@@ -33,7 +36,7 @@ ReactDOM.render(
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Welcome} />
-        <Route path="/:404" component={null} />
+        <Route path="/songbox" component={Songbox} />
       </Route>
     </Router>
   </Provider>

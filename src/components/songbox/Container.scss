@@ -1,0 +1,28 @@
+.container {
+  margin-top: 40px;
+  margin-left: 20%;
+  margin-right: 20%;
+  display: flex;
+  flex-direction: column;
+  font-family: futura;
+  color: #ccc;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  font-size: 25px;
+  font-style: oblique;
+  padding: 40px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  display: flex;
+}

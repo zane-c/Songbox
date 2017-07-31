@@ -1,0 +1,22 @@
+.loadingContainer {
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+  height: 25px;
+}
+
+.percentNumber {
+  color: #888;
+  position: absolute;
+  top: 50%;
+  left: 48%;
+}
+
+.loadingBar {
+  width: 30%;
+  background-color: #ddd;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  height: 45px;
+}
