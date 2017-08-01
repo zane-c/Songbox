@@ -28,6 +28,11 @@
   display: flex;
 }
 
+.portal {
+  visibility: hidden;
+  position: absolute;
+}
+
 @media screen and (max-width: 800px) {
   .container {
     margin: 0 5%;

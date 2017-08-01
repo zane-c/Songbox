@@ -3,10 +3,10 @@ import * as api from '../actions/songbox.js';
 const defaults = {
   isDownloading: false,
   isFetching: false,
-  percentLoaded: '0%',
   query: '',
   videos: [],
   searchId: '',
+  songs: {},
 };
 
 const reducer = (state = defaults, action) => {
@@ -24,6 +24,23 @@ const reducer = (state = defaults, action) => {
         videos: action.data.data.items,
         searchId: action.data.data.etag,
         isFetching: false,
+      };
+    }
+    case api.UPDATE_LOAD_PERCENT: {
+      return {
+        ...state,
+        songs: {
+          ...state.songs,
+          [action.videoId]: {
+            percentLoaded: `${action.percent}%`,
+          },
+        },
+      };
+    }
+    case api.NEW_IFRAME_KEY: {
+      return {
+        ...state,
+        iframeKey: action.newKey,
       };
     }
     default: {

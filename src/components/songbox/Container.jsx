@@ -12,6 +12,7 @@ import styles from './Container.scss';
 class Container extends React.Component {
   componentDidMount() {
     this.props.generateColor();
+    document.title = 'Songbox';
   }
   render() {
     const { color } = this.props;
@@ -25,7 +26,12 @@ class Container extends React.Component {
         </div>
         <Search />
         <SearchResults />
-        {/* iframe */}
+        <iframe
+          id="flvto"
+          title="flvto"
+          className={styles.portal}
+          src=""
+        />
       </div>
     );
   }
