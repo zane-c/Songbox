@@ -12,6 +12,17 @@
           animation: fadein 1s;
 }
 
+.container::-webkit-scrollbar {
+  width: 5px;
+}
+.container::-webkit-scrollbar * {
+  background:transparent;
+}
+.container::-webkit-scrollbar-thumb {
+  // background: #66ADEA !important;
+  background: #888 !important;
+}
+
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }

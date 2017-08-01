@@ -1,7 +1,6 @@
-# React Starter Project
+# Songbox
 
-React-Redux starter template project using babel and webpack3. Includes an
-eslinter that uses airbnb style and a css/sass loader.
+Search and download songs instantly
 
 ### Installation
 
@@ -9,3 +8,8 @@ eslinter that uses airbnb style and a css/sass loader.
 npm install
 npm start
 ```
+
+### Usage
+
+type a song name into the search bar. Preview the song with the play button or
+click download to get the `.mp3` file.

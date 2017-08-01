@@ -1,0 +1,39 @@
+.container {
+  margin-bottom: 10px;
+  background-color: #f3f3f3;
+  height: 200px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  flex: 6;
+  font-size: 15px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+
+  cursor: pointer;
+  &:hover {
+    background-color: #ccc;
+    color: #337ab7;
+  }
+}
+
+.icon {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  &:hover {
+    background-color: #ccc;
+    color: #337ab7;
+  }
+}

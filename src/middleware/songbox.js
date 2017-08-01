@@ -20,9 +20,11 @@ const debouncedApiSearch = _.debounce(apiSearch, 500);
 const middleware = store => next => (action) => {
   switch (action.type) {
     case api.ON_SEARCH_CHANGE: {
-      debouncedApiSearch(action.query, (data) => {
-        store.dispatch(api.saveSearchData(data));
-      });
+      if (action.query.length > 0) {
+        debouncedApiSearch(action.query, (data) => {
+          store.dispatch(api.saveSearchData(data));
+        });
+      }
       return next(action);
     }
     default: {

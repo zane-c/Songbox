@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Loader from 'halogen/cliploader';
-// import Result from './Result.jsx';
+import Result from './Result.jsx';
 import styles from './SearchResults.scss';
 
 const SearchResults = ({ isFetching, videos, query }) => {
@@ -25,7 +25,7 @@ const SearchResults = ({ isFetching, videos, query }) => {
   return (
     <div className={styles.container}>
       {videos.map(vid => (
-        <div>{vid.snippet.title}</div>
+        <Result key={vid.id.videoId} videoObject={vid} />
       ))}
     </div>
   );
