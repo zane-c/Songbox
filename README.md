@@ -11,5 +11,17 @@ npm start
 
 ### Usage
 
-type a song name into the search bar. Preview the song with the play button or
-click download to get the `.mp3` file.
+Google Chrome is a dependency of this suite. Before launching, quit all instances
+of Chrome then run
+
+```
+./run_mac.sh
+```
+
+Proceed to
+```
+localhost:9090
+```
+
+Type a song name into the search bar. Preview the song with the play button or
+click download to fetch the `.mp3` file.
