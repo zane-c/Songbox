@@ -6,7 +6,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 
 import App from './components/app.jsx';
-import Welcome from './components/src/Welcome.jsx';
+import FourOhFour from './components/src/FourOhFour.jsx';
 import Songbox from './components/songbox/Container.jsx';
 
 import colorsMiddleware from './middleware/colors.js';
@@ -39,8 +39,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Welcome} />
-        <Route path="/songbox" component={Songbox} />
+        <IndexRoute component={Songbox} />
+        <Route path="/:notFound" component={FourOhFour} />
       </Route>
     </Router>
   </Provider>

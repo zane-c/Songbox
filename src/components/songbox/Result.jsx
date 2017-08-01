@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
 import FaPlayCircleO from 'react-icons/lib/fa/play-circle-o';
 import FaChevronDown from 'react-icons/lib/fa/chevron-down';
 import FaChevronUp from 'react-icons/lib/fa/chevron-up';
 
+import { startDownload as download } from '../../actions/songbox.js';
 import ResultDetails from './ResultDetails.jsx';
 import LoadingPercent from './LoadingPercent.jsx';
 import Preview from './Preview.jsx';
@@ -19,7 +21,7 @@ class Result extends React.Component {
     };
   }
   render() {
-    const { videoObject } = this.props;
+    const { videoObject, startDownload, percentLoaded } = this.props;
     const { view } = this.state;
     const expandIcon = (view === '') ? <FaChevronDown /> : <FaChevronUp />;
 
@@ -29,7 +31,7 @@ class Result extends React.Component {
     } else if (view === 'download') {
       content = (
         <div className={styles.downloadingDetails}>
-          <LoadingPercent percentLoaded={'0%'} />
+          <LoadingPercent percentLoaded={percentLoaded} />
         </div>
       );
     } else if (view === 'preview') {
@@ -58,7 +60,13 @@ class Result extends React.Component {
           </div>
           <div
             className={styles.icon}
-            onClick={() => this.setState({ view: 'download' })}
+            onClick={() => {
+              if (view === 'download') {
+                this.setState({ view: '' });
+              } else {
+                this.setState({ view: 'download' }, startDownload);
+              }
+            }}
           >
             <FaCloudDownload />
           </div>
@@ -75,8 +83,30 @@ class Result extends React.Component {
   }
 }
 
-Result.propTypes = {
-  videoObject: PropTypes.object.isRequired,
+Result.defaultProps = {
+  percentLoaded: '0%',
 };
 
-export default Result;
+Result.propTypes = {
+  startDownload: PropTypes.func.isRequired,
+  videoObject: PropTypes.object.isRequired,
+  percentLoaded: PropTypes.string,
+};
+
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.videoObject.id.videoId;
+  if (state.songbox.songs[id]) {
+    return {
+      percentLoaded: state.songbox.songs[id].percentLoaded,
+    };
+  }
+  return {};
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  startDownload: () => {
+    dispatch(download(ownProps.videoObject.id.videoId));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Result);
