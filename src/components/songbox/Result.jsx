@@ -5,25 +5,49 @@ import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
 import FaPlayCircleO from 'react-icons/lib/fa/play-circle-o';
 import FaChevronDown from 'react-icons/lib/fa/chevron-down';
 import FaChevronUp from 'react-icons/lib/fa/chevron-up';
+
+import ResultDetails from './ResultDetails.jsx';
+import LoadingPercent from './LoadingPercent.jsx';
+import Preview from './Preview.jsx';
 import styles from './Result.scss';
 
 class Result extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false,
+      view: '',
     };
   }
   render() {
     const { videoObject } = this.props;
-    const { expanded } = this.state;
-    const expandIcon = (expanded) ? <FaChevronUp /> : <FaChevronDown />;
+    const { view } = this.state;
+    const expandIcon = (view === '') ? <FaChevronDown /> : <FaChevronUp />;
+
+    let content = null;
+    if (view === 'details') {
+      content = <ResultDetails videoObject={videoObject} />;
+    } else if (view === 'download') {
+      content = (
+        <div className={styles.downloadingDetails}>
+          <LoadingPercent percentLoaded={'0%'} />
+        </div>
+      );
+    } else if (view === 'preview') {
+      content = <Preview videoId={videoObject.id.videoId} />;
+    }
+
     return (
       <div className={styles.container}>
         <div className={styles.titleContainer}>
           <div
             className={styles.expander}
-            onClick={() => this.setState({ expanded: !expanded })}
+            onClick={() => {
+              if (view === '') {
+                this.setState({ view: 'details' });
+              } else {
+                this.setState({ view: '' });
+              }
+            }}
           >
             <div className={styles.title}>
               {videoObject.snippet.title}
@@ -32,30 +56,20 @@ class Result extends React.Component {
               {expandIcon}
             </div>
           </div>
-          <div className={styles.icon}>
+          <div
+            className={styles.icon}
+            onClick={() => this.setState({ view: 'download' })}
+          >
             <FaCloudDownload />
           </div>
-          <div className={styles.icon}>
+          <div
+            className={styles.icon}
+            onClick={() => this.setState({ view: 'preview' })}
+          >
             <FaPlayCircleO />
           </div>
         </div>
-        {expanded &&
-          <div className={styles.details}>
-            <div className={styles.rowContainer}>
-              <div className={styles.thumbnail}>
-                <img src={videoObject.snippet.thumbnails.default.url} alt={'thumbnail'} />
-              </div>
-              <a
-                className={styles.links}
-                href={`https://www.youtube.com/watch?v=${videoObject.id.videoId}`}
-                target="_blank"
-              >
-                <div>{`#${videoObject.id.videoId}`}</div>
-              </a>
-            </div>
-            <div className={styles.description}> {videoObject.snippet.description}</div>
-          </div>
-        }
+        {content}
       </div>
     );
   }

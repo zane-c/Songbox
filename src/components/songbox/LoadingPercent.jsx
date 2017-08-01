@@ -4,28 +4,21 @@ import { connect } from 'react-redux';
 
 import styles from './LoadingPercent.scss';
 
-const LoadingPercent = ({ isDownloading, percentLoaded }) => {
-  if (isDownloading) {
-    return (
-      <div className={styles.loadingContainer}>
-        <div
-          className={styles.loadingBar}
-          style={{ width: percentLoaded }}
-        />
-        <div className={styles.percentNumber}>{percentLoaded}</div>
-      </div>
-    );
-  }
-  return null;
-};
+const LoadingPercent = ({ percentLoaded }) => (
+  <div className={styles.loadingContainer}>
+    <div
+      className={styles.loadingBar}
+      style={{ width: percentLoaded }}
+    />
+    <div className={styles.percentNumber}>{percentLoaded}</div>
+  </div>
+);
 
 LoadingPercent.propTypes = {
-  isDownloading: PropTypes.bool.isRequired,
   percentLoaded: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
-  isDownloading: state.songbox.isDownloading,
   percentLoaded: state.songbox.percentLoaded,
 });
 

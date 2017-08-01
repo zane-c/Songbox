@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Loader from 'halogen/ringloader';
 import * as api from '../../actions/colors.js';
 
-import LoadingPercent from './LoadingPercent.jsx';
 import Search from './Search.jsx';
 import SearchResults from './SearchResults.jsx';
 import styles from './Container.scss';
@@ -25,7 +24,6 @@ class Container extends React.Component {
           Songbox
         </div>
         <Search />
-        <LoadingPercent />
         <SearchResults />
         {/* iframe */}
       </div>
