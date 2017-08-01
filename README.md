@@ -2,25 +2,20 @@
 
 Search and download songs instantly
 
-### Installation
+### Installation & Usage
 
 ```
 npm install
 npm start
 ```
 
-### Usage
-
 Google Chrome is a dependency of this suite. Before launching, quit all instances
-of Chrome then run
+of Chrome then run the boot script
 
 ```
 ./run_mac.sh
-```
-
-Proceed to
-```
-localhost:9090
+    or
+./run_windows.sh
 ```
 
 Type a song name into the search bar. Preview the song with the play button or
