@@ -1,1 +1,1 @@
-open -a "Google Chrome" --args --user-data-dir=$PWD/chrome
+open -a "Google Chrome" --args --disable-web-security --user-data-dir=$PWD/chrome
